@@ -18,6 +18,18 @@ To publish with GitHub Pages, place index.html in the repository root, then sele
 - Try **Eclipse scale** to reduce the body radii and make more alignments miss.
 - The three small views track the Moon from 45° north at sunrise, sunset, and local solar noon. Altitude, azimuth, and the geometric horizon are shown.
 
+## Local sky dome
+
+Choose **Sky dome** for a diagram camera outside a 45° north observer's sky. North is left, south right, east behind the observer, and west in front in the default view. Drag the dome to rotate; **Diagram view** restores that orientation.
+
+- Move **Solar time** through the day, or use **Sweep day** to animate it while holding the orbital arrangement still.
+- **Summer**, **Equinox**, and **Winter** arrange Earth's orbit at the corresponding northern-hemisphere seasonal geometry, preserving the Moon's relative orbital angle. These are geometry presets, not calendar dates.
+- Red and blue guides show the distant Sun's summer and winter solstice paths. At 45° N their noon elevations are 68.44° and 21.56°. **Season guides** toggles them.
+- Gold and pale dotted curves show daily paths for the current model Sun and Moon. Their markers disappear below the geometric horizon; their altitude and azimuth remain reported. Azimuth is clockwise from north.
+- Append **#sky** to the page address to open directly in this view.
+
+Seasonal guides ignore the deliberately oversized Earth. Current-body paths include surface parallax from the chosen model sizes, so they can differ substantially from realistic observations. Markers have fixed diagram sizes and do not depict apparent angular diameters or eclipses. Paths sample observer longitudes corresponding to local solar times while holding orbital positions fixed; actual orbital motion over a day, atmospheric refraction, and terrain are omitted. The orbital model's **Play** control can still evolve the arrangement; **Sweep day** pauses it.
+
 ## What is modeled
 
 The Moon's orbit defaults to an inclination of **5.145°** relative to Earth's orbital plane. Earth's spin axis is tilted **23.44°** relative to the normal of that plane.
@@ -56,7 +68,7 @@ Astronomical constants and geometric references are credited below. The cited or
 
 JavaScript startup, controls, camera inputs, tilt and node geometry, observer latitude, sunrise/sunset signs, terminator placement, and eclipse navigation were checked using simulated browser APIs. Eclipse jumps were checked for shadow overlap. HTML export and its clipboard fallback were also checked.
 
-Live WebGL shader compilation and final visual appearance were not independently previewed by the assistant. The project author explored the embedded model and provided feedback. This is a statement of what was actually checked, not a claim of scientific validation.
+The sky-dome update was checked in headless Microsoft Edge with software WebGL. All four WebGL renderers compiled; desktop and 390-pixel mobile layouts were visually inspected. Browser checks covered seasonal geometry, morning/evening signs, below-horizon hiding, seasonal presets, clock sweep, camera switching, reset, and both eclipse jumps. Earlier simulated-browser checks are described above. These checks verify implementation behavior, not scientific validation.
 
 Before publishing changes, open the file in a browser and check:
 1. Play/pause, scrubbing, reset, and camera movement.
@@ -78,3 +90,5 @@ Questions, corrections, and improvements are welcome through issues and pull req
 Source: [LawnDartLeo/sun-earth-moon](https://github.com/LawnDartLeo/sun-earth-moon).
 
 After GitHub Pages is enabled for main / (root), its standard project-site address is https://lawndartleo.github.io/sun-earth-moon/. A link here is not confirmation that hosting has already been enabled.
+
+
