@@ -22,7 +22,7 @@ To publish with GitHub Pages, place index.html in the repository root, then sele
 
 Choose **Sky dome** for a diagram camera outside a 45° north observer's sky. North is left, south right, east behind the observer, and west in front in the default view. Drag the dome to rotate; **Diagram view** restores that orientation.
 
-- Move **Solar time** through the day, or use **Sweep day** to animate it while holding the orbital arrangement still.
+- Move the **Time of day · 24 hours** slider above the dome through the day, or use **Sweep day** to animate it while holding the orbital arrangement still. **Sunrise**, **Noon**, and **Sunset** jump to those local solar positions; sunrise and sunset reflect the current season and model sizes rather than assuming 06:00 and 18:00. Times are local solar time, not civil clock time.
 - **Summer**, **Equinox**, and **Winter** arrange Earth's orbit at the corresponding northern-hemisphere seasonal geometry, preserving the Moon's relative orbital angle. These are geometry presets, not calendar dates.
 - Red and blue guides show the distant Sun's summer and winter solstice paths. At 45° N their noon elevations are 68.44° and 21.56°. **Season guides** toggles them.
 - Gold and pale dotted curves show daily paths for the current model Sun and Moon. Their markers disappear below the geometric horizon; their altitude and azimuth remain reported. Azimuth is clockwise from north.
