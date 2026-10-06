@@ -28,7 +28,7 @@ Choose **Sky dome** for a diagram camera outside a 45° north observer's sky. No
 - Gold and pale dotted curves show daily paths for the current model Sun and Moon. Their markers disappear below the geometric horizon; their altitude and azimuth remain reported. Azimuth is clockwise from north.
 - Append **#sky** to the page address to open directly in this view.
 
-Seasonal guides ignore the deliberately oversized Earth. Current-body paths include surface parallax from the chosen model sizes, so they can differ substantially from realistic observations. Markers have fixed diagram sizes and do not depict apparent angular diameters or eclipses. Paths sample observer longitudes corresponding to local solar times while holding orbital positions fixed; actual orbital motion over a day, atmospheric refraction, and terrain are omitted. The orbital model's **Play** control can still evolve the arrangement; **Sweep day** pauses it.
+Seasonal guides ignore the deliberately oversized Earth. Current-body paths include surface parallax from the chosen model sizes, so they can differ substantially from realistic observations. Markers have fixed diagram sizes and do not depict apparent angular diameters or solar-disk overlap. The Moon disk is shaded from the point Sun using the surface observer's viewing direction, including Earth's hard shadow when it intercepts the light. Its phase percentage describes the illuminated hemisphere geometry before eclipse darkening. A small dark-side fill keeps the unlit disk visible. Paths sample observer longitudes corresponding to local solar times while holding orbital positions fixed; actual orbital motion over a day, atmospheric refraction, and terrain are omitted. The orbital model's **Play** control can still evolve the arrangement; **Sweep day** pauses it.
 
 ## What is modeled
 
@@ -68,7 +68,7 @@ Astronomical constants and geometric references are credited below. The cited or
 
 JavaScript startup, controls, camera inputs, tilt and node geometry, observer latitude, sunrise/sunset signs, terminator placement, and eclipse navigation were checked using simulated browser APIs. Eclipse jumps were checked for shadow overlap. HTML export and its clipboard fallback were also checked.
 
-The sky-dome update was checked in headless Microsoft Edge with software WebGL. All four WebGL renderers compiled; desktop and 390-pixel mobile layouts were visually inspected. Browser checks covered seasonal geometry, morning/evening signs, below-horizon hiding, seasonal presets, clock sweep, camera switching, reset, and both eclipse jumps. Earlier simulated-browser checks are described above. These checks verify implementation behavior, not scientific validation.
+The sky-dome update was checked in headless Microsoft Edge with software WebGL. All four WebGL renderers compiled; desktop and 390-pixel mobile layouts were visually inspected. Browser checks covered seasonal geometry, morning/evening signs, below-horizon hiding, seasonal presets, clock sweep, camera switching, reset, and both eclipse jumps. Moon-disk checks cover new, quarter, and full phases, bright-limb orientation, phase invariance under diagram rotation, and Earth-shadow clipping. Earlier simulated-browser checks are described above. These checks verify implementation behavior, not scientific validation.
 
 Before publishing changes, open the file in a browser and check:
 1. Play/pause, scrubbing, reset, and camera movement.
