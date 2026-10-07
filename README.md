@@ -1,94 +1,47 @@
-# Sun–Earth–Moon orbital playground
+# Solar System from Earth
 
-An interactive, deliberately exaggerated three-body model for exploring orbital geometry, Moon phases, eclipses, and views from Earth.
+A small teaching tool for exploring the Sun, Earth’s Moon, seven other planets, and Pluto from the ground at 45° north. Earth is the observer’s home and the ground beneath the horizon. The original Sun–Earth–Moon playground is preserved in [playground.html](playground.html).
 
-## Run it
+## Run and explore
 
-Open **index.html** in a browser with WebGL enabled. Everything is contained in that file: HTML, CSS, JavaScript, and the WebGL shaders. There is no build step, package installation, external rendering library, OpenAI account, or API key.
+Open `index.html` in a modern browser. It is a standalone HTML file with no packages, rendering libraries, network requests, API keys, or build step. Use GitHub Pages with **main / (root)** to host the repository.
 
-To publish with GitHub Pages, place index.html in the repository root, then select **Settings → Pages → Deploy from a branch → main → /(root)** and save. GitHub Pages is available for public repositories on GitHub Free. See [GitHub's publishing-source documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+- The 24-hour slider changes local solar time. Sunrise, Noon, and Sunset jump to the appropriate solar positions and turn the camera toward the Sun.
+- Sweep day animates the observing longitude through a day while freezing the orbital arrangement.
+- Model day advances the orbits. The time slider covers ten model years initially; the number input allows longer intervals. ±30 d and seasonal presets provide short jumps.
+- Drag or use arrow keys to look around; scroll or use +/− to zoom. Reset view looks south again.
+- Click a sky label or an object button to inspect a magnified disk, phase, angular diameter, altitude, azimuth, and distance. An object button also points the camera toward that body if it is above the horizon. Dashed buttons mean below the horizon.
+- Daylight sky adds an illustrative daytime background. Labels remain visible for teaching; their presence does not establish naked-eye visibility.
+- Save HTML downloads a standalone copy, with the MIT notice and credits embedded.
 
-## Explore
+## Geometry and scale
 
-- Drag to rotate the camera; scroll or pinch to zoom.
-- Play, pause, change speed, or scrub the model time.
-- Use **Follow Earth** to inspect the Moon more closely.
-- Adjust body radii, orbit radii, Moon orbit inclination, and the line of nodes.
-- Use **Next solar** or **Next lunar** to pause at the next model eclipse.
-- Try **Eclipse scale** to reduce the body radii and make more alignments miss.
-- The three small views track the Moon from 45° north at sunrise, sunset, and local solar noon. Altitude, azimuth, and the geometric horizon are shown.
+Planets and Pluto follow circular orbits at fixed representative distances based on semimajor axes. All are deliberately placed in one ecliptic plane, including Pluto. Earth’s axis retains 23.44° tilt; the Moon retains a 5.145° orbital tilt, a fixed node, a circular 384,400 km orbit and a 27.321661-day period. No other moons are included.
 
-## Local sky dome
+Body radii and physical distances share one scale in astronomical units. The sky uses a perspective projection from Earth’s surface and computes topocentric apparent positions and angular diameters. The Sun and Moon are not enlarged in the main sky. For disks smaller than a pixel, a locator dot identifies the direction; that dot is not their physical diameter. The magnified inspector is explicitly separate from the main angular scale. Spherical surface shading uses a point Sun; Earth can cast a hard shadow on the Moon. Phase percentages describe illumination geometry before eclipse darkening. A dim unlit side aids readability.
 
-Choose **Sky dome** for a diagram camera outside a 45° north observer's sky. North is left, south right, east behind the observer, and west in front in the default view. Drag the dome to rotate; **Diagram view** restores that orientation.
+Model days are not real calendar dates or observing predictions. Initial planetary longitudes use JPL’s J2000 nominal elements, then evolve uniformly on the simplified circular orbits. Earth uses the Earth–Moon barycenter’s nominal orbital radius and longitude as an approximation. Pluto uses NASA’s J2000 mean elements. The Moon starts at an illustrative 218° longitude with its node fixed at 0°; this does not define an accurate epoch. Daily time sweeps freeze orbital motion, including lunar motion, over the sweep.
 
-- Move the **Time of day · 24 hours** slider above the dome through the day, or use **Sweep day** to animate it while holding the orbital arrangement still. **Sunrise**, **Noon**, and **Sunset** jump to those local solar positions; sunrise and sunset reflect the current season and model sizes rather than assuming 06:00 and 18:00. Times are local solar time, not civil clock time.
-- **Summer**, **Equinox**, and **Winter** arrange Earth's orbit at the corresponding northern-hemisphere seasonal geometry, preserving the Moon's relative orbital angle. These are geometry presets, not calendar dates.
-- Red and blue guides show the distant Sun's summer and winter solstice paths. At 45° N their noon elevations are 68.44° and 21.56°. **Season guides** toggles them.
-- Gold and pale dotted curves show daily paths for the current model Sun and Moon. Their markers disappear below the geometric horizon; their altitude and azimuth remain reported. Azimuth is clockwise from north.
-- Append **#sky** to the page address to open directly in this view.
+Local solar time selects an observing longitude relative to the Sun’s meridian at 45° N. Sunrise, noon, and sunset thus represent different longitudes, rather than a specified city and civil clock time. Sunrise/sunset use the center of the point Sun at the geometric horizon; refraction, terrain, and finite-disk sunrise effects are omitted.
 
-Seasonal guides ignore the deliberately oversized Earth. Current-body paths include surface parallax from the chosen model sizes, so they can differ substantially from realistic observations. Markers have fixed diagram sizes and do not depict apparent angular diameters or solar-disk overlap. The Moon disk is shaded from the point Sun using the surface observer's viewing direction, including Earth's hard shadow when it intercepts the light. Its phase percentage describes the illuminated hemisphere geometry before eclipse darkening. A small dark-side fill keeps the unlit disk visible. Paths sample observer longitudes corresponding to local solar times while holding orbital positions fixed; actual orbital motion over a day, atmospheric refraction, and terrain are omitted. The orbital model's **Play** control can still evolve the arrangement; **Sweep day** pauses it.
+No eccentricity, planetary inclinations, nodal precession, nutation, light-time, aberration, star background, rings, or other satellites are modeled. Saturn’s inset shows its spherical body without rings. Pluto’s real inclination and eccentricity are intentionally omitted. Surface colors and daylight colors are illustrative. There is no photometric visibility calculation. This is a geometry teaching tool, not a realistic planetarium or eclipse forecast.
 
-## What is modeled
+## Sources
 
-The Moon's orbit defaults to an inclination of **5.145°** relative to Earth's orbital plane. Earth's spin axis is tilted **23.44°** relative to the normal of that plane.
+- [JPL approximate planetary positions](https://ssd.jpl.nasa.gov/planets/approx_pos.html): nominal orbital radii and initial longitudes. The model deliberately omits JPL’s eccentricity/inclination terms and does not claim their ephemeris accuracy.
+- [JPL physical parameters](https://ssd.jpl.nasa.gov/planets/phys_par.html): body radii and orbital periods, including Pluto.
+- NASA [Pluto fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/plutofact.html): Pluto’s J2000 radius of orbit and initial mean longitude.
+- NASA [Moon fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html), [Sun fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html), and [Moon orbit](https://eclipse.gsfc.nasa.gov/SEhelp/moonorbit.html): lunar distance/size/period, solar size, axial tilt and lunar inclination.
 
-Both orbits are circular, with nominal periods of 365.25 and 27.32 model days. The line of nodes stays fixed unless adjusted manually. The Moon follows Earth as Earth follows the Sun. A point light at the Sun's center illuminates Earth and Moon, and they can cast shadows on one another.
+## Validation
 
-Each observer lies at **45° N relative to Earth's tilted spin axis**. The observer longitudes move to maintain the specified local solar condition; these are three separate sites, not one fixed person viewed at three times of day. Sunrise and sunset use the point-light geometric terminator. The local horizon hides below-horizon targets. Telescope views auto-zoom, so their fields of view can differ.
+Checked in headless Microsoft Edge. Geometry checks cover every circular orbital radius and return after a period, shared planetary plane, lunar distance/inclination, observer surface location and latitude, Sun angular diameter, sunrise/noon/sunset, horizon hiding at midnight, northern summer/winter noon heights, east/west orientation, Pluto inspection, and outer-planet motion over model years. Browser checks cover daylight controls, selection, reset, startup errors, and exported MIT/source text. Desktop and 390-pixel layouts were visually inspected. These checks do not establish ephemeris accuracy or real-world visibility.
 
-The eclipse buttons search forward from the current arrangement, find a closest approach of the relevant shadow axis, and check for overlap using the current sizes and distances. They pause there. Search is limited to the next 1,100 model days and skips the first model day to avoid selecting an ongoing event.
+## Credits and license
 
-## Compromises and limitations
+LawnDartLeo supplied the concept, requirements, and educational direction. Code and documentation were developed with OpenAI Codex assistance. NASA/JPL sources did not create or endorse this implementation. No third-party image assets or rendering libraries are bundled.
 
-- **Sizes and distances are not to scale.** Controls use arbitrary model units. Large display radii can produce frequent eclipses even with the appropriate orbital tilt. Eclipse scale helps demonstrate near misses but is also exaggerated.
-- **This is not an ephemeris or eclipse predictor.** Model day numbers are not calendar dates. Manual arrangement changes the starting geometry.
-- The visible Sun sphere illustrates the Sun; lighting comes from a **point source**, not a finite solar disk. Hard shadows therefore do not reproduce penumbrae or annular eclipses. Apparent overlap of the displayed Sun and Moon can differ from the point-light shadow criterion.
-- No orbital eccentricity, nodal precession, gravitational integration, or detailed lunar rotation is modeled.
-- Planet markings are procedural illustrations, not accurate geographic maps.
-- Dark-side fill and daylight sky colors are visual aids, not physically calibrated radiometry or atmospheric scattering.
-- Observer views use the exaggerated geometry, so their parallax, apparent angular sizes, and visibility should not be treated as real-world observing predictions.
-- Refraction, terrain, and finite solar-disk effects on sunrise/sunset are omitted.
-- A solar eclipse somewhere on the model Earth need not be visible to the three observers at 45° north.
+[MIT License](LICENSE), copyright © 2026 LawnDartLeo. Preserve the copyright and license notice when redistributing. The full notice is embedded in HTML copies.
 
-## Authorship and AI assistance
-
-LawnDartLeo supplied the concept, requirements, and direction, inspired by a SOLIDWORKS model whose true scale made exploration difficult. Code and documentation were developed with assistance from **OpenAI Codex** through an iterative conversation. AI assistance is disclosed in the model itself.
-
-Astronomical constants and geometric references are credited below. The cited organizations did not create or endorse this implementation. No third-party image assets or rendering libraries are bundled.
-
-## References
-
-- [NASA: Eclipses and the Moon's orbit](https://eclipse.gsfc.nasa.gov/SEhelp/moonorbit.html) — mean lunar orbital inclination and nodes.
-- [NASA: Earth fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html) — Earth's obliquity.
-- [NOAA: General solar position calculations](https://gml.noaa.gov/grad/solcalc/solareqns.PDF) — solar-angle geometry. This model uses its own vector implementation and simplified orbital state, not NOAA's calendar ephemeris.
-
-## Verification
-
-JavaScript startup, controls, camera inputs, tilt and node geometry, observer latitude, sunrise/sunset signs, terminator placement, and eclipse navigation were checked using simulated browser APIs. Eclipse jumps were checked for shadow overlap. HTML export and its clipboard fallback were also checked.
-
-The sky-dome update was checked in headless Microsoft Edge with software WebGL. All four WebGL renderers compiled; desktop and 390-pixel mobile layouts were visually inspected. Browser checks covered seasonal geometry, morning/evening signs, below-horizon hiding, seasonal presets, clock sweep, camera switching, reset, and both eclipse jumps. Moon-disk checks cover new, quarter, and full phases, bright-limb orientation, phase invariance under diagram rotation, and Earth-shadow clipping. Earlier simulated-browser checks are described above. These checks verify implementation behavior, not scientific validation.
-
-Before publishing changes, open the file in a browser and check:
-1. Play/pause, scrubbing, reset, and camera movement.
-2. Tilt and node controls, including 0° inclination.
-3. Solar and lunar jumps with both scale presets.
-4. All three observer views, horizon hiding, and reported local solar conditions.
-5. HTML/README downloads and copying when downloads are blocked.
-
-## Contributing
-
-Questions, corrections, and improvements are welcome through issues and pull requests. Explain any change to the geometry or scale assumptions, cite primary sources for astronomical claims, and describe how you checked the result. Preserve the scientific references and AI-assistance disclosure.
-
-## License
-
-[MIT License](LICENSE), copyright (c) 2026 LawnDartLeo. The full notice is in the repository's LICENSE file and embedded in exported HTML. Keep the copyright and license notice when redistributing copies or substantial portions.
-
-## Public source and hosting
-
-Source: [LawnDartLeo/sun-earth-moon](https://github.com/LawnDartLeo/sun-earth-moon).
-
-After GitHub Pages is enabled for main / (root), its standard project-site address is https://lawndartleo.github.io/sun-earth-moon/. A link here is not confirmation that hosting has already been enabled.
-
+[Public repository](https://github.com/LawnDartLeo/sun-earth-moon). The original adjustable model remains in [playground.html](playground.html), with its documentation in [PLAYGROUND.md](PLAYGROUND.md).
 
